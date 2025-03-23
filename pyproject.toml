@@ -1,0 +1,35 @@
+[project]
+name = "mindgarden"
+version = "0.1.0"
+description = "A personal, integrated memory and assistant system with an AI agent named Quinn"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=1.10.0",
+    "openai-agents>=0.2.0",
+    "pydantic>=2.5.0",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "neo4j>=5.14.0",
+    "loguru>=0.7.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.12.0",
+    "ruff>=0.1.9",
+    "mypy>=1.7.0",
+]
+
+voice = [
+    "openai-agents[voice]>=0.2.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+mindgarden = "mindgarden.cli:main"

@@ -1,0 +1,93 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Functional Specification for MindGarden / Quinn
+
+## 1. Overview
+
+MindGarden is a personal, integrated memory and assistant system designed for one-stop AI needs. It serves as the backbone for storing, retrieving, and processing personal data, documents, and conversation history. Quinn is the friendly, gender-neutral AI assistant that interacts with users via text and voice, orchestrating tasks, retrieving memories, and assisting with daily needs.
+
+## 2. System Architecture
+
+### High-Level Layers
+
+- **User Interface Layer**
+  - Voice Interface (STT/TTS via OpenAI)
+  - Web/CLI Interface (Gradio, CLI)
+
+- **Core Agent Module (Quinn)**
+  - Agent Loop & Orchestration (OpenAI Agent SDK)
+  - Tool Integration (custom functions, web search, file access)
+
+- **Integrated Memory & Knowledge Module (KN / MindGarden)**
+  - Document Ingestion & Entity Extraction
+  - Conversation History
+  - Graph Database (Neo4j)
+
+- **Tools & Plugin Layer**
+  - Custom Tools
+
+- **Data Storage & Infrastructure**
+  - Neo4j Database
+  - File System
+  - Configuration & Logging
+
+## 3. Functional Requirements
+
+- **User Interaction**
+  - Multi-modal input (text/voice)
+  - Dynamic agent behavior
+  - Customizable personality
+
+- **Memory & Knowledge Management**
+  - Document processing (markdown conversion, entity extraction)
+  - Conversation history (logging, semantic retrieval)
+
+- **Tool and Plugin Integration**
+  - Custom functions (scheduling, code generation)
+  - Voice processing (STT/TTS)
+
+- **Package and Deployment**
+  - Package management (uv)
+  - Docker containerization
+  - Modular integration (KN module as a separate repository)
+
+## 4. Non-Functional Requirements
+
+- Performance (low latency, efficient retrieval)
+- Scalability (designed for personal use with future scalability options)
+- Maintainability (modular, documented)
+- Extensibility (easy tool and memory system extension)
+- User Experience (friendly, adaptive interactions)
+
+## 5. Integration Points
+
+- Agent & Memory integration
+- Voice integration (audio-text conversion)
+- Database interaction (Neo4j)
+- Package management (uv)
+
+## 6. Project Naming & Branding
+
+- **Project Name:** MindGarden  
+  _"Nurturing knowledge, memories, and growth."_
+
+- **Assistant Name:** Quinn  
+  _"Your adaptable, friendly, and supportive companion."_
+
+## 7. Roadmap & Phases
+
+1. **Phase 1 – MVP Implementation**
+   - Project setup, KN integration, basic agent loop, memory storage
+
+2. **Phase 2 – Voice Integration & UI**
+   - Voice support (STT/TTS), Gradio web UI
+
+3. **Phase 3 – Enhanced Memory & Tools**
+   - Advanced memory retrieval, additional tools
+
+4. **Phase 4 – Refinement & Personalization**
+   - Performance optimization, personality refinement, CI/CD setup
+

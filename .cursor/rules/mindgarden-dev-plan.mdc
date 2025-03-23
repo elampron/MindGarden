@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+
+- You can @ files here# Development Plan Overview for MindGarden / Quinn
+
+## Phase 1: Initial MVP (Minimal Viable Product)
+- **Repository Initialization**
+  - Setup repositories (main MindGarden repo, existing KN module repo integration).
+  - Project setup using uv for package management.
+  - Docker setup with docker-compose (MindGarden, Neo4j).
+
+- **Core Functionality**
+  - Minimal agent loop implementation (OpenAI Agent SDK).
+  - Basic CLI interface for interaction with Quinn.
+  - Initial integration of KN module for memory storage and retrieval.
+  - Basic conversation history management through KN.
+
+## Phase 2: Simple Web UI and Voice Interaction
+- **Web User Interface**
+  - Develop a basic Gradio-based web interface for interacting with Quinn.
+
+- **Voice Support Integration**
+  - Add voice interaction using OpenAI’s voice agent features (STT/TTS).
+  - Test and validate voice interactions for accuracy and user experience.
+
+## Phase 3: Enhanced UI & Admin Portal
+- **Improved User Interface**
+  - Design and develop a more user-friendly, polished web interface.
+  - Ensure responsive design for different devices.
+
+- **Admin Portal**
+  - Create an administration portal for managing data, configurations, and gaining insights.
+  - Implement monitoring and insights dashboard (usage analytics, system performance).
+
+- **Extended Toolset**
+  - Additional custom tools based on user feedback and requirements.
+
+## Phase 4: Refinement, Optimization, and Personalization
+- **Performance Optimization**
+  - Profiling, optimizing memory retrieval, and reducing response times.
+
+- **CI/CD and Testing**
+  - Implement comprehensive testing suite (unit, integration, E2E tests).
+  - Set up automated CI/CD pipeline for ease of deployment.
+
+- **Personalization & Adaptability**
+  - Refine Quinn’s persona, interactions, and user-adaptable settings.
+  - Gather and implement continuous user feedback to enhance overall experience.
+
+
+- You can use markdown but dont have to
