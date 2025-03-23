@@ -104,6 +104,7 @@ class Agent:
         # Define tools
         tools = [
             self._create_memory_tool(),
+            self._create_entity_tool(),
         ]
         
         # Create prompt builder with system message
@@ -154,6 +155,29 @@ class Agent:
                 "required": ["query"],
             },
         )
+        
+    def _create_entity_tool(self) -> Tool:
+        """
+        Create a tool for retrieving entity information.
+        
+        Returns:
+            A Tool instance for entity lookup.
+        """
+        return Tool(
+            name="entity_lookup",
+            description="Look up information about an entity in the knowledge graph",
+            run=self._entity_lookup_tool,
+            parameters={
+                "type": "object",
+                "properties": {
+                    "entity_name": {
+                        "type": "string",
+                        "description": "The name of the entity to look up",
+                    },
+                },
+                "required": ["entity_name"],
+            },
+        )
 
     async def _memory_search_tool(self, query: str, limit: int = 5) -> Dict[str, Any]:
         """
@@ -171,6 +195,19 @@ class Agent:
             "memories": memories,
             "count": len(memories),
         }
+        
+    async def _entity_lookup_tool(self, entity_name: str) -> Dict[str, Any]:
+        """
+        Tool implementation for entity lookup.
+        
+        Args:
+            entity_name: The name of the entity to look up.
+            
+        Returns:
+            A dictionary with entity information.
+        """
+        entity_info = self.memory_manager.get_entity_information(entity_name)
+        return entity_info
 
     def _build_system_message(self, state: Dict[str, Any]) -> str:
         """
@@ -186,6 +223,11 @@ class Agent:
         You are {self.config.agent_name}, a helpful, friendly, and knowledgeable assistant.
         
         Your goal is to provide helpful, accurate, and thoughtful responses to user queries.
+        You have access to memory storage which contains conversation history and documents.
+        You also have access to a knowledge graph with entities and their relationships.
+        
+        Use the memory_search tool when you need to find relevant information from past conversations or stored documents.
+        Use the entity_lookup tool when you need detailed information about a specific entity.
         """
         
         # Add memory context if available
